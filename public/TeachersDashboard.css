@@ -1,0 +1,120 @@
+*{
+  margin: 0%;  
+  padding: 0%;
+  text-decoration: none;
+}
+
+.navbar{
+  background-color: black;
+  position: fixed;
+  width: 240px;
+  height: 100%;
+}
+
+.logo{
+  color: white;
+  width: 50px;
+  height: 150px;
+
+}
+
+.menu a{
+  color: white;
+  line-height: 50px;
+  display: block;
+}
+
+.menu ul li a {
+  line-height: 35px;
+  text-align: left;
+  padding-left: 45px;
+}
+
+a:hover{
+  background-color: rgba(255, 240, 240, 0.203);
+}
+
+.drop:hover{
+  background-color: rgba(255, 240, 240, 0.203);
+}
+
+.drop{
+color: white;
+line-height: 50px;
+display: block;
+font-weight: bold;
+cursor: pointer;
+}
+
+.bold{
+font-weight: bold;
+}
+
+.dropdown{
+position: relative;
+padding-left: 40px;
+}
+
+/* Dropdown Menu Styles */
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown li {
+  margin-bottom: 10px;
+}
+
+.dropdown li:last-child {
+  margin-bottom: 0;
+}
+
+/* Icon Rotation Styles */
+
+.rotate-icon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.rotate-icon.down {
+  transform: rotate(180deg);
+}
+
+/* Icon Styles (optional) */
+
+.rotate-icon {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+/* Example Icon (optional) */
+
+.rotate-icon::before {
+  transform: rotate(180deg); /* Down arrow */
+}
+
+.rotate-icon.down::before {
+   transform: rotate(180deg); /* Up arrow */
+}
+
+.dropdown-icon{
+  margin-left: 55px;
+}
+
+.icon{
+  display: inline-block;
+  padding-right: 9px;
+}   
+
+.bar{
+  font-size: 25px;
+  padding-left: 240px;
+  margin-top: 10px;
+  display: block;
+}

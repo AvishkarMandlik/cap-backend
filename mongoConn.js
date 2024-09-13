@@ -17,6 +17,7 @@ async function connect() {
 
 async function disconnect() {
     client.close();
+    console.log('Disconnected successfully from server');
 }
 
 module.exports = {connect,disconnect}

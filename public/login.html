@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link rel="stylesheet" href="login.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <body>
+    <div class="wrapper">
+      <form action="/signup" method="post">
+        <h2>Sign Up</h2>
+        <select name="role" class="signup">
+          <option value="student">Student <i class="fa-solid fa-user"></i></option>
+          <option value="teacher"><i class="fa-solid fa-user"></i> Teacher</option>
+          <option value="cap"><i class="fa-solid fa-user"></i> Cap</option>
+        </select>
+        <br /><br />
+        <label for="">LastName: </label>
+        <input type="text" name="LastName" placeholder="" required />
+        <br /><br />
+        <label for=""> First Name:</label>
+        <input type="text" name="FirstName" placeholder="" required />
+        <br /><br />
+        <label for=" "> Middle Name:</label>
+        <input type="text" name="MiddleName" placeholder="" required />
+        <br /><br />
+        <label for=" "> Mother Name:</label>
+        <input type="text" name="MotherName" placeholder="" required />
+        <br />
+
+        <!-- <label>DOB:</label>
+        <input type="Date" name="DOB" id="dob"> -->
+        <br /><br />
+        <label for="">Mobile Number:</label>
+        <input type="text" name="mob" placeholder="" />
+        <br /><br />
+        <label for=""><i class="fa-solid fa-envelope"></i>Email ID:</label>
+        <input type="email" name="email" placeholder="" />
+        <br /><br />
+        <label for=""> Course :</label>
+        <select name="course" class="dropdown">
+          <option value="art">Art :</option>
+          <option value="commerce">Commerce:</option>
+          <option value="science">Science:</option>
+          <option value="bvoc">B.voc</option>
+          <option value="PG.Diploma Courses">PG Diploma Course</option>
+        </select>
+
+        <!-- <input type="text" name="Course" placeholder="Coures"> -->
+        <br /><br />
+        <label for=""> year:</label>
+        <select name="year" class="dropdown">
+          <option value="first year" class="drop">First Year:</option>
+          <option value="second year" class="drop">Second Year:</option>
+          <option value="third year" class="drop">Third Year</option>
+          <option value="forth year" class="drop">Fourth Year</option>
+        </select>
+        <br /><br />
+        <label for=""> Gender:</label>
+        <label for="">Male:</label>
+        <input type="radio" name="gender" value="male"/>
+        <label for=""> Female:</label>
+        <input type="radio" name="gender" value="female" />
+        <br /><br />
+        <label for=" ">Create Password:</label>
+        <input type="password" name="password" placeholder="" />
+        <br />
+        <input type="submit"/>
+      </form>
+    </div>
+    <br /><br />
+    <div class="form-wrapper sign-up">
+      <form action="connect.php" method="post">
+        <h2>Sign In</h2>
+        <div class="input-group">
+          <label for="">Email</label>
+          <input type="email" required name="email" />
+        </div>
+        <br /><br />
+        <div class="input-group">
+          <label for="">Password</label>
+          <input type="password" required name="password" />
+        </div>
+        <div class="remember">
+          <label
+            ><input type="checkbox" />I agree to the term & conditions</label
+          >
+        </div>
+        <br />
+        <button type="submit">Sign in</button>
+        <br />
+        <div class="signUp-link">
+          <p>
+            Aready have an account?
+            <a href="#" class="signInBtn-link">Sign In</a>
+          </p>
+        </div>
+      </form>
+    </div>
+    <script src="login.js"></script>
+  </body>
+</html>
