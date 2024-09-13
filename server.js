@@ -1,19 +1,20 @@
+//import statements
 const express = require("express");
 const app = express();
 const bodyparser = require("body-parser");
 const teacher = require("./teacherRoutes.js");
 const cap  = require("./capRoutes.js");
-
-app.use("/teacher", teacher);
-app.use("/cap", cap);
-
 require("dotenv").config();
 const { connect, disconnect } = require("./mongoConn.js");
 
+//middlewares
+app.use("/teacher", teacher);
+app.use("/cap", cap);
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+//routes
 app.get("/", async (req, res) => {
   res.sendFile(__dirname + "/public/login.html");
 });
@@ -42,6 +43,7 @@ app.post("/signup", async (req, res) => {
   }
 });
 
+//server
 app.listen(3000, () => {
   console.log("Sever listening on Port 3000");
 });

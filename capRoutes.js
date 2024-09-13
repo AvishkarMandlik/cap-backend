@@ -6,10 +6,10 @@ const router = express.Router();
 router.get("/verification", async (req, res) => {
     const db = await connect();
     const collection = db.collection("accounts");
-    const vericationAccounts = await collection.find({verify:false}).toArray();
-    console.log("found documents =>", vericationAccounts);
+    const verificationAccounts = await collection.find({verify:false}).toArray();
+    console.log("found documents =>", verificationAccounts);
     await disconnect();
-    res.send(vericationAccounts);
+    res.send(verificationAccounts);
   });
 
 module.exports = router
