@@ -4,6 +4,12 @@ const app = express();
 const bodyparser = require("body-parser");
 const teacher = require("./teacherRoutes.js");
 const cap  = require("./capRoutes.js");
+const student = require("./studentRoutes.js");
+
+app.use("/teacher", teacher);
+app.use("/cap", cap);
+app.use("/student",student);
+
 require("dotenv").config();
 const { connect, disconnect } = require("./mongoConn.js");
 
