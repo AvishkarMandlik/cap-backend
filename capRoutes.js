@@ -12,4 +12,12 @@ router.get("/verification", async (req, res) => {
     res.send(verificationAccounts);
   });
 
+
+router.put("/verifyacount", async (req,res) => {
+  const db = await connect();
+  const collection = db.collection("accounts");
+  const updateResult = await collection.updateOne({email:req.body.email},{$set:{verify:true}});
+  res.send(updateResult)
+})
+
 module.exports = router

@@ -17,7 +17,7 @@
 
   <body>
     <div class="wrapper">
-      <form action="/signup" method="post">
+      <form >
         <h2>Sign Up</h2>
         <select name="role" class="signup">
           <option value="student">Student <i class="fa-solid fa-user"></i></option>
@@ -75,7 +75,8 @@
         <label for=" ">Create Password:</label>
         <input type="password" name="password" placeholder="" />
         <br />
-        <input type="submit"/>
+        <!-- <input type="submit"/> -->
+         <button onclick="signupHandler(event)">Submit</button>
       </form>
     </div>
     <br /><br />
