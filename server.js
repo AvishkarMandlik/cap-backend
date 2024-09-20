@@ -3,12 +3,10 @@ const express = require("express");
 const app = express();
 const bodyparser = require("body-parser");
 const teacher = require("./teacherRoutes.js");
-const cap  = require("./capRoutes.js");
+const cap = require("./capRoutes.js");
 const student = require("./studentRoutes.js");
+const pages = require("./pagesRoute.js")
 
-app.use("/teacher", teacher);
-app.use("/cap", cap);
-app.use("/student",student);
 
 require("dotenv").config();
 const { connect, disconnect } = require("./mongoConn.js");
@@ -16,6 +14,9 @@ const { connect, disconnect } = require("./mongoConn.js");
 //middlewares
 app.use("/teacher", teacher);
 app.use("/cap", cap);
+app.use("/student", student);
+app.use("/pages" , pages);
+
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -26,26 +27,47 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/signup", async (req, res) => {
-  console.log(req.body);
+  const db = await connect();
+    const collection = db.collection("accounts");
+    const checkemail = await collection.findOne({ email: req.body.email });
+    if (checkemail) {
+      return res.json({
+        success: false,
+        message: "Email Already Exists",
+      });
+    }
   if (req.body.role === "student") {
     const db = await connect();
     const collection = db.collection("accounts");
-
     const insertResult = await collection.insertOne(req.body);
-    console.log("Inserted documents =>", insertResult);
     await disconnect();
-    res.send(insertResult);
+    res.redirect("./pages/studentAccount");
   } else if (req.body.role === "teacher") {
     req.body.verify = false;
     const db = await connect();
     const collection = db.collection("accounts");
-
     const insertResult = await collection.insertOne(req.body);
-    console.log("Inserted documents =>", insertResult);
     await disconnect();
-    res.send(insertResult);
+    res.json({
+      success: true,
+      message: "Account Creation Request Sent wait for verification",
+    });
+  }
+  else if (req.body.role === "cap") {
+    req.body.verify = false;
+    const db = await connect();
+    const collection = db.collection("accounts");
+    const insertResult = await collection.insertOne(req.body);
+    await disconnect();
+    res.json({
+      success: true,
+      message: "Account Creation Request Sent wait for verification",
+    });
   } else {
-    res.send("Not inserted");
+    res.json({
+      success: false,
+      message: "Some Error Occured Try Again Later",
+    });
   }
 });
 
