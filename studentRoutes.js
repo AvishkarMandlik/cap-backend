@@ -11,6 +11,7 @@ Router.post("/checkAdmission", async(req,res)=>{
 
     const admission = await collection.findOne({email : req.body.email});
     let admissiondata;
+    await disconnect();
     if(admission){
         if(admission.verify){
              admissiondata = {
