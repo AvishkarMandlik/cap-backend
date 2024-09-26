@@ -3,9 +3,9 @@ const { connect, disconnect } = require("./mongoConn.js");
 const router = express.Router();
 
 
-router.get("/verification", async (req, res) => {
+router.get("/Teacherverification", async (req, res) => {
     const db = await connect();
-    const collection = db.collection("accounts");
+    const collection = db.collection("TeacherAccounts");
     const verificationAccounts = await collection.find({verify:false}).toArray();
     console.log("found documents =>", verificationAccounts);
     await disconnect();
@@ -13,9 +13,16 @@ router.get("/verification", async (req, res) => {
   });
 
 
-router.put("/verifyacount", async (req,res) => {
+router.put("/verifyTeacher", async (req,res) => {
   const db = await connect();
-  const collection = db.collection("accounts");
+  const collection = db.collection("TeacherAccounts");
+  const updateResult = await collection.updateOne({email:req.body.email},{$set:{verify:true}});
+  res.send(updateResult)
+})
+
+router.put("/verifyAdmission", async (req,res) => {
+  const db = await connect();
+  const collection = db.collection("Admissions");
   const updateResult = await collection.updateOne({email:req.body.email},{$set:{verify:true}});
   res.send(updateResult)
 })

@@ -38,14 +38,14 @@ app.post("/signup", async (req, res) => {
     }
   if (req.body.role === "student") {
     const db = await connect();
-    const collection = db.collection("accounts");
+    const collection = db.collection("StudentAccounts");
     const insertResult = await collection.insertOne(req.body);
     await disconnect();
     res.redirect("./pages/studentAccount");
   } else if (req.body.role === "teacher") {
     req.body.verify = false;
     const db = await connect();
-    const collection = db.collection("accounts");
+    const collection = db.collection("TeacherAccounts");
     const insertResult = await collection.insertOne(req.body);
     await disconnect();
     res.json({
@@ -56,7 +56,7 @@ app.post("/signup", async (req, res) => {
   else if (req.body.role === "cap") {
     req.body.verify = false;
     const db = await connect();
-    const collection = db.collection("accounts");
+    const collection = db.collection("CapAccounts");
     const insertResult = await collection.insertOne(req.body);
     await disconnect();
     res.json({
