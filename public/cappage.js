@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 async function checkUnverifiedApplications() {
-    const res = await fetch("/cap/verification");
+    const res = await fetch("/cap/Teacherverification");
     const data = await res.json(); 
 
     if (data.length > 0) {

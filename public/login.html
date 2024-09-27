@@ -3,111 +3,179 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Log in</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="Login.css" />
   </head>
-  <link rel="stylesheet" href="login.css" />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-
   <body>
     <div class="wrapper">
-      <form >
-        <h2>Sign Up</h2>
-        <select name="role" class="signup">
-          <option value="student">Student <i class="fa-solid fa-user"></i></option>
-          <option value="teacher"><i class="fa-solid fa-user"></i> Teacher</option>
-          <option value="cap"><i class="fa-solid fa-user"></i> Cap</option>
-        </select>
-        <br /><br />
-        <label for="">LastName: </label>
-        <input type="text" name="LastName" placeholder="" required />
-        <br /><br />
-        <label for=""> First Name:</label>
-        <input type="text" name="FirstName" placeholder="" required />
-        <br /><br />
-        <label for=" "> Middle Name:</label>
-        <input type="text" name="MiddleName" placeholder="" required />
-        <br /><br />
-        <label for=" "> Mother Name:</label>
-        <input type="text" name="MotherName" placeholder="" required />
-        <br />
+      <!-- sign in page -->
+      <div class="form-wrapper sign-in">
+        <form>
+          <h2>Sign In</h2>
+          <div class="dropdown">
+            <button class="dropdown-toggle">
+              User<i class="fa-solid fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="#" data-value="student"
+                ><i class="fa-solid fa-user"></i> Student</a
+              >
+              <a href="#" data-value="teacher"
+                ><i class="fa-solid fa-user"></i> Teacher</a
+              >
+              <a href="#" data-value="cap"
+                ><i class="fa-solid fa-user"></i> Cap User</a
+              >
+            </div>
+          </div>
+          <div class="input-group">
+            <label for="">Username</label>
+            <input type="text" required name="username" />
+          </div>
+          <div class="input-group">
+            <label for="">Mobile Number:</label>
+            <input type="text" name=" Mobile Number" id="number" required />
+          </div>
 
-        <!-- <label>DOB:</label>
-        <input type="Date" name="DOB" id="dob"> -->
-        <br /><br />
-        <label for="">Mobile Number:</label>
-        <input type="text" name="mob" placeholder="" />
-        <br /><br />
-        <label for=""><i class="fa-solid fa-envelope"></i>Email ID:</label>
-        <input type="email" name="email" placeholder="" />
-        <br /><br />
-        <label for=""> Course :</label>
-        <select name="course" class="dropdown">
-          <option value="art">Art :</option>
-          <option value="commerce">Commerce:</option>
-          <option value="science">Science:</option>
-          <option value="bvoc">B.voc</option>
-          <option value="PG.Diploma Courses">PG Diploma Course</option>
-        </select>
+          <div class="input-group">
+            <label for="" id="pwds">Password</label>
+            <input type="password" required name="password" id="pwd1" />
 
-        <!-- <input type="text" name="Course" placeholder="Coures"> -->
-        <br /><br />
-        <label for=""> year:</label>
-        <select name="year" class="dropdown">
-          <option value="first year" class="drop">First Year:</option>
-          <option value="second year" class="drop">Second Year:</option>
-          <option value="third year" class="drop">Third Year</option>
-          <option value="forth year" class="drop">Fourth Year</option>
-        </select>
-        <br /><br />
-        <label for=""> Gender:</label>
-        <label for="">Male:</label>
-        <input type="radio" name="gender" value="male"/>
-        <label for=""> Female:</label>
-        <input type="radio" name="gender" value="female" />
-        <br /><br />
-        <label for=" ">Create Password:</label>
-        <input type="password" name="password" placeholder="" />
-        <br />
-        <!-- <input type="submit"/> -->
-         <button onclick="signupHandler(event)">Submit</button>
-      </form>
+            <i class="eye-icon" onclick="togglePasswordVisibility()"></i>
+          </div>
+          <div class="remember">
+            <label><input type="checkbox" />Remember me</label>
+          </div>
+          <button type="submit">Sign In</button>
+          <div class="Signup-link">
+            <p>
+              Don't have an account?
+              <a href="#" class="SignupBtn-link">Signup</a>
+            </p>
+            <p>Or sign in with</p>
+
+            <div class="social-icon">
+              <a href="https://www.facebook.com/login/"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+              <a
+                href="https://accounts.google.com/v3/signin/identifier?elo=1&ifkv=ATuJsjzmefIEKOWVMZIcTTvmzEj1Xfimh6UwYj2qwR1ERtuI4LON7oHaDTTxzKsdAYpsk-nqydKPbw&theme=glif&flowName=GlifWebSignIn&flowEntry=ServiceLogin&continue=https%3A%2F%2Faccounts.google.com%2FManageAccount%3Fnc%3D1"
+                ><i class="fa-brands fa-google"></i
+              ></a>
+              <a href="https://twitter.com/i/flow/login"
+                ><i class="fa-brands fa-twitter"></i
+              ></a>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- sign up page -->
+      <div class="form-wrapper Signup">
+        <form>
+          <h2>Signup</h2>
+          <select id="mySelect" name="role">
+            <option value="student">Student</option>
+            <option value="teacher">Teacher</option>
+            <option value="cap">Cap User</option>
+          </select>
+          <div class="container">
+            <label for="last-name">Last Name: </label>
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              required
+            />
+            <label for="first-name" class="con">First Name: </label>
+            <input
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              required
+            />
+            <label for="middle-name">Middle Name: </label>
+            <input
+              type="text"
+              name="middleName"
+              placeholder="Middle Name"
+              required
+            />
+            <label for="mname" class="con"> Mother Name:</label>
+            <input
+              type="text"
+              name="MotherName"
+              placeholder="Mother Name"
+              id="mname"
+              required
+            />
+            <label for="dob">DOB:</label>
+            <input type="date" name="dob" id="dob" />
+            <label for="Signupnumber" class="con">Mobile Number:</label>
+            <input
+              type="text"
+              name="mobileNumber"
+              placeholder="Number"
+              id="Signupnumber"
+              required
+            />
+            <label for="signupmail"
+              ><i class="fa-solid fa-envelope"></i>Email ID:</label
+            >
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Id"
+              id="signupmail"
+            />
+            <label for="course" class="con"> Course :</label>
+            <select name="Courses" id="course">
+              <option value="art">Art's</option>
+              <option value="commerce">Commerce</option>
+              <option value="science">Scince</option>
+              <option value="bvoc">B.voc</option>
+              <option value="PG.Diploma CourseS">PG Diploma Course</option>
+            </select>
+          </div>
+          <!-- <input type="text" name="Course" placeholder="Coures"> -->
+          <label for="academic_year">Academic year:</label>
+          <select name="year" id="academic_year">
+            <option value="">First Year</option>
+            <option value="">Second Year</option>
+            <option value="">Third Year</option>
+            <option value="">Fourth Year</option>
+          </select>
+
+          <label> Gender:</label>
+          <input type="radio" name="gender" value="male" /> Male
+          <input type="radio" name="gender" value="female" /> Female
+
+          <label for="signuppass">Create Password:</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            id="sinuppass"
+          />
+          <div class="remember">
+            <input type="checkbox" id="terms" /><label for="terms"
+              >I agree to the term & conditions</label
+            >
+          </div>
+          <button class="button" onclick="signupHandler(event)">Signup</button>
+          <div class="Signup-link">
+            <p>
+              Already have an account?
+              <a href="#" class="signInBtn-link">Sign In</a>
+            </p>
+          </div>
+        </form>
+      </div>
     </div>
-    <br /><br />
-    <div class="form-wrapper sign-up">
-      <form action="connect.php" method="post">
-        <h2>Sign In</h2>
-        <div class="input-group">
-          <label for="">Email</label>
-          <input type="email" required name="email" />
-        </div>
-        <br /><br />
-        <div class="input-group">
-          <label for="">Password</label>
-          <input type="password" required name="password" />
-        </div>
-        <div class="remember">
-          <label
-            ><input type="checkbox" />I agree to the term & conditions</label
-          >
-        </div>
-        <br />
-        <button type="submit">Sign in</button>
-        <br />
-        <div class="signUp-link">
-          <p>
-            Aready have an account?
-            <a href="#" class="signInBtn-link">Sign In</a>
-          </p>
-        </div>
-      </form>
-    </div>
-    <script src="login.js"></script>
+    <script src="./login.js"></script>
   </body>
 </html>
