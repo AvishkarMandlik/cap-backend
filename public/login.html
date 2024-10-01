@@ -17,7 +17,7 @@
         <form>
           <h2>Sign In</h2>
           <div class="dropdown">
-            <button class="dropdown-toggle">
+            <button class="dropdown-toggle" onclick="noChange(event)">
               User<i class="fa-solid fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
@@ -32,25 +32,22 @@
               >
             </div>
           </div>
+
           <div class="input-group">
-            <label for="">Username</label>
-            <input type="text" required name="username" />
-          </div>
-          <div class="input-group">
-            <label for="">Mobile Number:</label>
+            <label for="number">Mobile Number:</label>
             <input type="text" name=" Mobile Number" id="number" required />
           </div>
 
           <div class="input-group">
-            <label for="" id="pwds">Password</label>
+            <label for="" id="pwds">Password:</label>
             <input type="password" required name="password" id="pwd1" />
 
             <i class="eye-icon" onclick="togglePasswordVisibility()"></i>
           </div>
           <div class="remember">
-            <label><input type="checkbox" />Remember me</label>
+            <label><input type="checkbox" id="terms" />Remember me</label>
           </div>
-          <button type="submit">Sign In</button>
+          <button type="submit" onclick="signInHandler(event)">Sign In</button>
           <div class="Signup-link">
             <p>
               Don't have an account?
@@ -71,12 +68,13 @@
               ></a>
             </div>
           </div>
+          <input type="hidden" name="role" id="signRole">
         </form>
       </div>
 
       <!-- sign up page -->
       <div class="form-wrapper Signup">
-        <form>
+        <form class="signupHandler">
           <h2>Signup</h2>
           <select id="mySelect" name="role">
             <option value="student">Student</option>
@@ -151,9 +149,9 @@
           </select>
 
           <label> Gender:</label>
-          <input type="radio" name="gender" value="male" /> Male
-          <input type="radio" name="gender" value="female" /> Female
-
+          <input type="radio" name="gender" value="male" id="male"/> <label for="male">Male</label>
+          <input type="radio" name="gender" value="female" id="female"/> <label for="female">Female</label>
+          <br><br>
           <label for="signuppass">Create Password:</label>
           <input
             type="password"
@@ -166,7 +164,7 @@
               >I agree to the term & conditions</label
             >
           </div>
-          <button class="button" onclick="signupHandler(event)">Signup</button>
+          <button class="button" type="submit" onclick="signupHandler(event)">Signup</button>
           <div class="Signup-link">
             <p>
               Already have an account?
