@@ -3,6 +3,23 @@ const signInBtnLink = document.querySelector('.signInBtn-link');
 const wrapper = document.querySelector('.wrapper');
 
 
+
+
+
+document.addEventListener('DOMContentLoaded', function(){
+  fetch('/check-session', {
+    credentials: 'include' // Include cookies in request
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.loggedIn) {
+      alert('User is logged in');
+    }
+  });
+  
+});
+
+
 SignupBtnLink.addEventListener('click', () => {
     wrapper.classList.add('active'); // Add active class when signing up
 });
@@ -26,12 +43,15 @@ function togglePasswordVisibility() {
         if (e.target.tagName === 'A') {
             const selectedValue = e.target.getAttribute('data-value');
             dropdownToggle.innerHTML = e.target.innerHTML + ' <i class="fa-solid fa-caret-down"></i>';
+            document.getElementById("signRole").value = selectedValue ;
         }
     });
 
 //Do not Touch this code
-const form = document.querySelectorAll("form")[1];
+// const form = document.querySelectorAll("form")[1];
+const form = document.querySelector(".signupHandler");
 
+form.addEventListener("submit", signupHandler);
 async function signupHandler(event) {
   event.preventDefault();
   const formData = new FormData(form);
@@ -45,4 +65,49 @@ async function signupHandler(event) {
 
   const result = await response.json();
   alert(result.message);
+}
+
+
+// Select the form correctly and add an event listener
+
+
+
+    
+
+const signinForm = document.querySelector("form");
+const terms = document.getElementById('terms');
+
+async function signInHandler(event) {
+  event.preventDefault();
+  if(terms.checked){
+    const formData = new FormData(signinForm);
+    const data = Object.fromEntries(formData.entries());
+  
+    const response = await fetch("/signin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+  
+    const result = await response.json();
+    if(result.success){
+      if(document.getElementById('signRole')=='student'){
+        window.location.href = './StudentDashboard.html';
+      }
+      if(document.getElementById('signRole')=='teacher'){
+        window.location.href = './TeacherDashboard.html';
+      }
+      if(document.getElementById('signRole')=='cap'){
+        window.location.href = './cappage.html';
+      }
+    }
+    alert(result.message);
+
+  }else{
+    alert("Please accept terms and conditions")
+  }
 };
+
+function noChange(event){
+  event.preventDefault();
+}
