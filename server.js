@@ -83,7 +83,7 @@ app.post("/signup", async (req, res) => {
     const collection = db.collection("CapAccounts");
     const checkemail = await collection.findOne({ email: req.body.email });
     const checknumber = await collection.findOne({
-      email: req.body.mobileNumber,
+      mobileNumber: req.body.mobileNumber,
     });
     if (checkemail) {
       return res.json({
