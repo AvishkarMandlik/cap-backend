@@ -26,25 +26,51 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/signup", async (req, res) => {
-  const db = await connect();
-  const collection = db.collection("accounts");
-  const checkemail = await collection.findOne({ email: req.body.email });
-  if (checkemail) {
-    return res.json({
-      success: false,
-      message: "Email Already Exists",
-    });
-  }
   if (req.body.role === "student") {
     const db = await connect();
     const collection = db.collection("StudentAccounts");
+    const checkemail = await collection.findOne({ email: req.body.email });
+    const checknumber = await collection.findOne({
+      email: req.body.mobileNumber,
+    });
+    if (checkemail) {
+      return res.json({
+        success: false,
+        message: "Email Already Exists",
+      });
+    }
+    if (checknumber) {
+      return res.json({
+        success: false,
+        message: "Mobile Number Already Exists",
+      });
+    }
     const insertResult = await collection.insertOne(req.body);
     await disconnect();
-    res.redirect("./pages/studentAccount");
+    res.json({
+      success: true,
+      message: "Account Created Successfully. Login using your credentials",
+    });
   } else if (req.body.role === "teacher") {
     req.body.verify = false;
     const db = await connect();
     const collection = db.collection("TeacherAccounts");
+    const checkemail = await collection.findOne({ email: req.body.email });
+    const checknumber = await collection.findOne({
+      email: req.body.mobileNumber,
+    });
+    if (checkemail) {
+      return res.json({
+        success: false,
+        message: "Email Already Exists",
+      });
+    }
+    if (checknumber) {
+      return res.json({
+        success: false,
+        message: "Mobile Number Already Exists",
+      });
+    }
     const insertResult = await collection.insertOne(req.body);
     await disconnect();
     res.json({
@@ -55,6 +81,22 @@ app.post("/signup", async (req, res) => {
     req.body.verify = false;
     const db = await connect();
     const collection = db.collection("CapAccounts");
+    const checkemail = await collection.findOne({ email: req.body.email });
+    const checknumber = await collection.findOne({
+      email: req.body.mobileNumber,
+    });
+    if (checkemail) {
+      return res.json({
+        success: false,
+        message: "Email Already Exists",
+      });
+    }
+    if (checknumber) {
+      return res.json({
+        success: false,
+        message: "Mobile Number Already Exists",
+      });
+    }
     const insertResult = await collection.insertOne(req.body);
     await disconnect();
     res.json({
@@ -70,55 +112,74 @@ app.post("/signup", async (req, res) => {
 });
 
 app.post("/signin", async (req, res) => {
-  const db = await connect();
-  if ((req.body.role = "student")) {
-    const collection = db.collection("StudentAccounts");
-    const checkemail = await collection.findOne({
-      mobilenumber: req.body.mobilenumber,
-      password: req.body.password,
-    });
-  }
-  if ((req.body.role = "teacher")) {
-    const collection = db.collection("TeacherAccounts");
-    const checkemail = await collection.findOne({
-      mobilenumber: req.body.mobilenumber,
-      password: req.body.password,
-    });
-  }
-  if ((req.body.role = "cap")) {
-    const collection = db.collection("CapAccounts");
-    const checkemail = await collection.findOne({
-      mobilenumber: req.body.mobilenumber,
-      password: req.body.password,
-    });
-  }
+  console.log(req.body);
 
+  let checkemail = false;
+  const db = await connect();
+  if (req.body.role == "student") {
+    const collection = db.collection("StudentAccounts");
+    checkemail = await collection.findOne({
+      mobileNumber: req.body.mobileNumber,
+      password: req.body.password
+    });
+    console.log("searching in students");
+  } else if (req.body.role == "teacher") {
+    const collection = db.collection("TeacherAccounts");
+    checkemail = await collection.findOne({
+      mobileNumber: req.body.mobileNumber,
+      password: req.body.password,
+    });
+  } else if (req.body.role == "cap") {
+    const collection = db.collection("CapAccounts");
+    checkemail = await collection.findOne({
+      mobileNumber: req.body.mobileNumber,
+      password: req.body.password,
+    });
+  } else {
+    disconnect();
+    return res.json({
+      success: false,
+      message: "Some Error Occured Try Again Later",
+    });
+  }
+  console.log(checkemail);
   if (checkemail) {
-    const sessionToken = "unique_session_token";
+    // const sessionToken = req.body.mobilenumber;
 
     // Set the token as a cookie
-    res.cookie("session_token", sessionToken, {
-      httpOnly: true, // Prevents JavaScript access to the cookie
-      secure: true, // Use only in HTTPS environments
-      maxAge: 2 * 60 * 1000, // 1 day expiration
+    // res.cookie("session_token", sessionToken, {
+    //   httpOnly: true, // Prevents JavaScript access to the cookie
+    //   secure: true, // Use only in HTTPS environments
+    //   maxAge: 2 * 60 * 1000, // 1 day expiration
+    // });
+    if (req.body.role == "teacher" || req.body.role == "cap") {
+      if (!checkemail.verify) {
+        return res.json({
+          success: false,
+          message: "Account Not Verified Yet Please Contact Your Administrator",
+        });
+      }
+    }
+    res.json({
+      message: "Login successful",
+      mobileNumber: req.body.mobileNumber,
+      success: true,
     });
-
-    res.json({ message: "Login successful", success: true });
   } else {
-    res.status(401).json({ message: "Invalid credentials", success: false });
+    return res.json({ message: "Invalid credentials", success: false });
   }
 });
 
-app.get("/check-session", (req, res) => {
-  const sessionToken = req.cookies.session_token;
+// app.get("/check-session", (req, res) => {
+//   const sessionToken = req.cookies.session_token;
 
-  // Replace this with your session verification logic
-  if (sessionToken === "unique_session_token") {
-    res.json({ loggedIn: true });
-  } else {
-    res.json({ loggedIn: false });
-  }
-});
+//   // Replace this with your session verification logic
+//   if (sessionToken === req.body.mobilenumber) {
+//     res.json({ loggedIn: true, id: req.body.mobilenumber });
+//   } else {
+//     res.json({ loggedIn: false ,id:null});
+//   }
+// });
 
 app.post("/logout", (req, res) => {
   res.clearCookie("session_token");
@@ -127,5 +188,5 @@ app.post("/logout", (req, res) => {
 
 //server
 app.listen(3000, () => {
-  console.log("Sever listening on Port 3000");
+  console.log("Server listening on Port 3000");
 });

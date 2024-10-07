@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="cappage.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="cappage.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
     <title>Cap</title>
-</head>
-<body>
-  <!-- <i class="fa-solid fa-bars bar"></i> -->
+  </head>
+  <body>
+    <!-- <i class="fa-solid fa-bars bar"></i> -->
     <div class="navbar">
-      <div class="logo">logo
-      </div>
-      <div class="menu"> 
-        <a href="#"><i class="fa-solid fa-house icon"></i>
-          DASHBOARD</a>
-          <a href=""><i class="fa-solid fa-square-check icon"></i>COURSES</a>
-          <a href=""><i class="fa-regular fa-file-lines icon"></i>MARKSHEET</a>
-          <a href=""><i class="fa-solid fa-f icon"></i>ATKT/FAIL/PASS</a>
-          <a href=""><i class="fa-solid fa-repeat icon"></i>REVALUETION</a>
-          <a href=""><i class="fa-solid fa-square-poll-vertical icon"></i>ANALYSIS</a>
-        <a href="#"><i class="fa fa-sign-out nav-icon icon"></i>LOGOUT</a>
+      <div class="logo">logo</div>
+      <div class="menu">
+        <a href="#"><i class="fa-solid fa-house icon"></i> DASHBOARD</a>
+        <a href=""><i class="fa-solid fa-square-check icon"></i>COURSES</a>
+        <a href=""><i class="fa-regular fa-file-lines icon"></i>MARKSHEET</a>
+        <a href=""><i class="fa-solid fa-f icon"></i>ATKT/FAIL/PASS</a>
+        <a href=""><i class="fa-solid fa-repeat icon"></i>REVALUETION</a>
+        <a href=""
+          ><i class="fa-solid fa-square-poll-vertical icon"></i>ANALYSIS</a
+        >
+        <a href="#" onclick="logout()"><i class="fa fa-sign-out nav-icon icon"></i>LOGOUT</a>
       </div>
     </div>
     <div class="body" id="body">
-
+      <div class="NewStream">
+        <input type="text" name="stream" id="stream">
+        <button onclick="addStream()">Add</button>
+      </div>
+      
     </div>
     <script src="cappage.js"></script>
-</body>
+    <script src="./common.js"></script>
+  </body>
 </html>

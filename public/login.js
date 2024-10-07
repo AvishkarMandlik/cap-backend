@@ -6,18 +6,18 @@ const wrapper = document.querySelector('.wrapper');
 
 
 
-document.addEventListener('DOMContentLoaded', function(){
-  fetch('/check-session', {
-    credentials: 'include' // Include cookies in request
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.loggedIn) {
-      alert('User is logged in');
-    }
-  });
+// document.addEventListener('DOMContentLoaded', function(){
+//   fetch('/check-session', {
+//     credentials: 'include' // Include cookies in request
+//   })
+//   .then(response => response.json())
+//   .then(data => {
+//     if (data.loggedIn) {
+//       alert('User is logged in');
+//     }
+//   });
   
-});
+// });
 
 
 SignupBtnLink.addEventListener('click', () => {
@@ -48,8 +48,13 @@ function togglePasswordVisibility() {
     });
 
 //Do not Touch this code
+document.addEventListener("DOMContentLoaded",() => {
+  sessionStorage.removeItem("mob");
+})
+
+
 // const form = document.querySelectorAll("form")[1];
-const form = document.querySelector(".signupHandler");
+const form = document.querySelector(".signupform");
 
 form.addEventListener("submit", signupHandler);
 async function signupHandler(event) {
@@ -65,6 +70,9 @@ async function signupHandler(event) {
 
   const result = await response.json();
   alert(result.message);
+  if(result.success){
+    location.reload();
+  }
 }
 
 
@@ -82,7 +90,6 @@ async function signInHandler(event) {
   if(terms.checked){
     const formData = new FormData(signinForm);
     const data = Object.fromEntries(formData.entries());
-  
     const response = await fetch("/signin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -90,23 +97,25 @@ async function signInHandler(event) {
     });
   
     const result = await response.json();
+    alert(result.message);
     if(result.success){
-      if(document.getElementById('signRole')=='student'){
+      sessionStorage.setItem("mob", result.mobileNumber);
+      if(document.getElementById('signRole').value =='student'){
         window.location.href = './StudentDashboard.html';
       }
-      if(document.getElementById('signRole')=='teacher'){
-        window.location.href = './TeacherDashboard.html';
+      if(document.getElementById('signRole').value=='teacher'){
+        window.location.href = './TeachersDashboard.html';
       }
-      if(document.getElementById('signRole')=='cap'){
+      if(document.getElementById('signRole').value=='cap'){
         window.location.href = './cappage.html';
       }
     }
-    alert(result.message);
 
   }else{
     alert("Please accept terms and conditions")
   }
 };
+
 
 function noChange(event){
   event.preventDefault();
