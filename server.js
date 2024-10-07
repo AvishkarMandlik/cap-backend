@@ -31,7 +31,7 @@ app.post("/signup", async (req, res) => {
     const collection = db.collection("StudentAccounts");
     const checkemail = await collection.findOne({ email: req.body.email });
     const checknumber = await collection.findOne({
-      email: req.body.mobileNumber,
+      mobileNumber: req.body.mobileNumber,
     });
     if (checkemail) {
       return res.json({
@@ -57,7 +57,7 @@ app.post("/signup", async (req, res) => {
     const collection = db.collection("TeacherAccounts");
     const checkemail = await collection.findOne({ email: req.body.email });
     const checknumber = await collection.findOne({
-      email: req.body.mobileNumber,
+      mobileNumber: req.body.mobileNumber,
     });
     if (checkemail) {
       return res.json({
