@@ -2,6 +2,7 @@
 const express = require("express");
 const app = express();
 const bodyparser = require("body-parser");
+const cors = require('cors');
 const teacher = require("./teacherRoutes.js");
 const cap = require("./capRoutes.js");
 const student = require("./studentRoutes.js");
@@ -9,7 +10,7 @@ const pages = require("./pagesRoute.js");
 
 require("dotenv").config();
 const { connect, disconnect } = require("./mongoConn.js");
-
+app.use(cors());
 //middlewares
 app.use("/teacher", teacher);
 app.use("/cap", cap);
