@@ -50,6 +50,7 @@ app.post("/signup", async (req, res) => {
     await disconnect();
     res.json({
       success: true,
+      role:req.body.role,
       message: "Account Created Successfully. Login using your credentials",
     });
   } else if (req.body.role === "teacher") {
@@ -164,6 +165,7 @@ app.post("/signin", async (req, res) => {
     res.json({
       message: "Login successful",
       mobileNumber: req.body.mobileNumber,
+      role: req.body.role,
       success: true,
     });
   } else {
