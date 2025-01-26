@@ -279,7 +279,7 @@ function Signup() {
           <p className="text-sm">
             Already have an account?{" "}
             <Link to="/login" className="text-blue-600 hover:underline">
-              Sign In
+              Log In
             </Link>
           </p>
         </div>
