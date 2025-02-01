@@ -6,7 +6,7 @@ import Signup from './pages/Signup';
 import StudentDashboard from './pages/StudentDashboard';
 import TeacherDashboard from './pages/TeacherDashboard';
 import CapDashboard from './pages/CapDashboard';
-import HallTicket from './components/HallTicket';
+import HallTicket from './components/HallTicket/HallTicket';
 
 function App() {
   return (
