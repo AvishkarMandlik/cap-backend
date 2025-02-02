@@ -7,6 +7,9 @@ import StudentDashboard from './pages/StudentDashboard';
 import TeacherDashboard from './pages/TeacherDashboard';
 import CapDashboard from './pages/CapDashboard';
 import HallTicket from './components/HallTicket/HallTicket';
+import AdmissionForm from './pages/AdmissionForm';
+import PersonalInfo from './components/Student/Personalinfo';
+import Educationalinfo from './components/Student/Educationalinfo';
 
 function App() {
   return (
@@ -19,6 +22,10 @@ function App() {
       <Route path="/teacherdashboard" element={<TeacherDashboard />} />
       <Route path="/capdashboard" element={<CapDashboard />} />
       <Route path="/hallticket" element={<HallTicket />} />
+      <Route path="/studentdashboard/admissionform" element={<AdmissionForm />} />
+      <Route path="/studentdashboard/admissionform/personalinfo" element={<PersonalInfo />} />
+      <Route path="/studentdashboard/admissionform/educationalinfo" element={<Educationalinfo />} />
+
     </Routes>
   </BrowserRouter>
   );
