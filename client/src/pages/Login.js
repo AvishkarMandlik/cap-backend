@@ -28,7 +28,8 @@ function Login() {
       .then((response) => {
         if (response.data.success) {
           setResponseMessage(response.data.message);
-          showAlert("success", "Success", "Login successful");    
+          showAlert("success", "Success", "Login successful");  
+          localStorage.setItem("User Data", JSON.stringify(response.data));  
           if (response.data.role === "student") {
             window.location.href = "./studentdashboard";
           } else if (response.data.role === "teacher") {
