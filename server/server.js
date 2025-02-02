@@ -162,10 +162,12 @@ app.post("/signin", async (req, res) => {
         });
       }
     }
+    console.log(checkemail);
     res.json({
       message: "Login successful",
       mobileNumber: req.body.mobileNumber,
       role: req.body.role,
+      name: checkemail.firstName + " " + checkemail.lastName,
       success: true,
     });
   } else {
