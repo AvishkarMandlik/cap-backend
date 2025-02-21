@@ -38,7 +38,7 @@ function Signup() {
     }
 
     axios
-      .post("http://localhost:3000/signup", formData)
+      .post("http://localhost:5000/signup", formData)
       .then((response) => {
         setResponseMessage(response.data.message);
       })
