@@ -14,7 +14,7 @@ function StudentDashboard() {
     const studentProps = {
         title: "STUDENT DASBOARD",
         items: [
-            { text: "Admission Form", icon: "fa fa-address-book", link: "./admission", callbackfunc :()=>{ManagePage("AdmissionForm")} },
+            { text: "Admission Form", icon: "fa fa-address-book", link: "./admissionform", callbackfunc :()=>{ManagePage("AdmissionForm")} },
             { text: "Courses", icon: "fa-solid fa-square-check", link: "#", callbackfunc :()=>{ManagePage("Courses")}},
             { text: "Revaluation", icon: "fa-solid fa-repeat", link: "#",callbackfunc :()=>{ManagePage("Revaluation")} },
             { text: "Results", icon: "fa fa-file-text", link: "#", callbackfunc :()=>{ManagePage("Results")} },

@@ -192,6 +192,6 @@ app.post("/logout", (req, res) => {
 });
 
 //server
-app.listen(3000, () => {
-  console.log("Server listening on Port 3000");
+app.listen(5000, () => {
+  console.log("Server listening on Port 5000");
 });

@@ -19,7 +19,7 @@ function Admission() {
 
   const studentProps = {
     items: [
-      { text: "Dashboard", icon: "fa-solid fa-square-check", link: "#" },
+        { text: "Dashboard", icon: "fa-solid fa-square-check", link: "/studentdashboard" },
         { text: "Personal Info", icon: "fa fa-address-book", link: "./personalinfo" },
         { text: "Educational Info", icon: "fa-solid fa-repeat", link: "#" , callbackfunc :()=>{ManagePage("EducationalInfo")}},
         { text: "Photo & Signature", icon: "fa fa-file-text", link: "#" , callbackfunc :()=>{ManagePage("PhotoSignature")}},
