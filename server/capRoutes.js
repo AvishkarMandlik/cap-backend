@@ -12,6 +12,15 @@ router.get("/Teacherverification", async (req, res) => {
     res.send(verificationAccounts);
   });
 
+router.get("/Admissionverification", async (req, res) => {
+    const db = await connect();
+    const collection = db.collection("Admissions");
+    const verificationAccounts = await collection.find({verify:false}).toArray();
+    console.log("found documents =>", verificationAccounts);
+    await disconnect();
+    res.send(verificationAccounts);
+  });
+
 
 router.put("/verifyTeacher", async (req,res) => {
   const db = await connect();
@@ -26,5 +35,6 @@ router.put("/verifyAdmission", async (req,res) => {
   const updateResult = await collection.updateOne({email:req.body.email},{$set:{verify:true}});
   res.send(updateResult)
 })
+
 
 module.exports = router

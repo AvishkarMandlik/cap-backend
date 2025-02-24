@@ -7,7 +7,7 @@ Router.use(bodyparser.json())
 Router.post("/checkAdmission", async(req,res)=>{
 
     const db = await connect();
-    const collection = db.collection("admissions");
+    const collection = db.collection("Admissions");
 
     const admission = await collection.findOne({email : req.body.email});
     let admissiondata;
@@ -36,7 +36,7 @@ Router.post("/checkAdmission", async(req,res)=>{
 Router.post("/newAdmission", async(req,res)=>{
 
     const db = await connect();
-    const collection = db.collection("admissions");
+    const collection = db.collection("Admissions");
     req.body.verify = false
     
     const insertResult = await collection.insertOne(req.body);

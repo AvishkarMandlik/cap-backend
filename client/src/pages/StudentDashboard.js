@@ -1,6 +1,7 @@
 import React from 'react';
 import SidePanel from '../components/SidePanel';
 import { useState } from 'react';
+import { redirect } from 'react-router-dom';
 
 
 function StudentDashboard() {
@@ -12,12 +13,12 @@ function StudentDashboard() {
 
 
     const studentProps = {
-        title: "STUDENT DASBOARD",
+        title: "STUDENT DASHBOARD",
         items: [
-            { text: "Admission Form", icon: "fa fa-address-book", link: "./admission", callbackfunc :()=>{ManagePage("AdmissionForm")} },
-            { text: "Courses", icon: "fa-solid fa-square-check", link: "#", callbackfunc :()=>{ManagePage("Courses")}},
-            { text: "Revaluation", icon: "fa-solid fa-repeat", link: "#",callbackfunc :()=>{ManagePage("Revaluation")} },
-            { text: "Results", icon: "fa fa-file-text", link: "#", callbackfunc :()=>{ManagePage("Results")} },
+            { text: "Admission Form", icon: "fa fa-address-book",  callbackfunc :()=>{ManagePage("AdmissionForm")} },
+            { text: "Courses", icon: "fa-solid fa-square-check",  callbackfunc :()=>{ManagePage("Courses")}},
+            { text: "Revaluation", icon: "fa-solid fa-repeat", callbackfunc :()=>{ManagePage("Revaluation")} },
+            { text: "Results", icon: "fa fa-file-text",  callbackfunc :()=>{ManagePage("Results")} },
         ],
         content: "Welcome, student! Here you can access your information."
     };
@@ -33,6 +34,8 @@ function StudentDashboard() {
         if (page === 'AdmissionForm') {
             turnFalse();
             setAdmissionForm(true);
+            window.location.href = "./studentdashboard/admissionform";
+            console.log('admission form');
         } else if (page === 'Courses') {
             turnFalse();
             setCourses(true);

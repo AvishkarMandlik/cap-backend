@@ -1,15 +1,14 @@
-import SidePanel from '../components/SidePanel'
-import { useState } from 'react';
-import PersonalInfo from '../components/Student/Personalinfo';
-import EducationalInfo from '../components/Student/Educationalinfo';
-import PhotoSignature from '../components/Student/PhotoSignature';
-import SelectionSubject from '../components/Student/SelectionSubject';
-import CoursePayment from '../components/Student/CoursePayment';
+import SidePanel from "../components/SidePanel";
+import { useState } from "react";
+import PersonalInfo from "../components/Student/Personalinfo";
+import EducationalInfo from "../components/Student/Educationalinfo";
+import PhotoSignature from "../components/Student/PhotoSignature";
+import SelectionSubject from "../components/Student/SelectionSubject";
+import CoursePayment from "../components/Student/CoursePayment";
 // import SubmitApplication from '../components/Student/SubmitApplication';
 
-
 function Admission() {
-
+  const [DashboardCheck, setDashboard] = useState(true);
   const [PersonalInfoCheck, setPersonalInfo] = useState(true);
   const [EducationalInfoCheck, setEducationInfo] = useState(false);
   const [PhotoSignatureCheck, setPhotoSignature] = useState(false);
@@ -19,67 +18,116 @@ function Admission() {
 
   const studentProps = {
     items: [
-      { text: "Dashboard", icon: "fa-solid fa-square-check", link: "#" },
-        { text: "Personal Info", icon: "fa fa-address-book", link: "./personalinfo" },
-        { text: "Educational Info", icon: "fa-solid fa-repeat", link: "#" , callbackfunc :()=>{ManagePage("EducationalInfo")}},
-        { text: "Photo & Signature", icon: "fa fa-file-text", link: "#" , callbackfunc :()=>{ManagePage("PhotoSignature")}},
-        { text: "Selection of Subject", icon: "fa fa-file-text", link: "#" , callbackfunc :()=>{ManagePage("SelectionSubject")}},
-        { text: "Course Payment", icon: "fa fa-file-text", link: "#", callbackfunc :()=>{ManagePage("CoursePayment")}},
-        { text: "Submit Application", icon: "fa fa-file-text", link: "#", callbackfunc :()=>{ManagePage("SubmitApplication")}},
-        { text: "Exit to Main Dashboard", icon: "fa fa-file-text", link:"/studentdashboard" }
+      {
+        text: "Dashboard",
+        icon: "fa-solid fa-square-check",
+        callbackfunc: () => {
+          ManagePage("Dashboard");
+        },
+      },
+      {
+        text: "Personal Info",
+        icon: "fa fa-address-book",
+        callbackfunc: () => {
+          ManagePage("PersonalInfo");
+        },
+      },
+      {
+        text: "Educational Info",
+        icon: "fa-solid fa-repeat",
+        callbackfunc: () => {
+          ManagePage("EducationalInfo");
+        },
+      },
+      {
+        text: "Photo & Signature",
+        icon: "fa fa-file-text",
+        callbackfunc: () => {
+          ManagePage("PhotoSignature");
+        },
+      },
+      {
+        text: "Selection of Subject",
+        icon: "fa fa-file-text",
+        callbackfunc: () => {
+          ManagePage("SelectionSubject");
+        },
+      },
+      {
+        text: "Course Payment",
+        icon: "fa fa-file-text",
+        callbackfunc: () => {
+          ManagePage("CoursePayment");
+        },
+      },
+      {
+        text: "Submit Application",
+        icon: "fa fa-file-text",
+        callbackfunc: () => {
+          ManagePage("SubmitApplication");
+        },
+      },
+      {
+        text: "Exit to Main Dashboard",
+        icon: "fa fa-file-text",
+        link: "/studentdashboard",
+      },
     ],
-};
-function turnFalse(){
+  };
+  function turnFalse() {
+    setDashboard(false);
     setPersonalInfo(false);
     setEducationInfo(false);
     setPhotoSignature(false);
     setSelectionSubject(false);
     setCoursePayment(false);
     setSubmitApplication(false);
-};
-function ManagePage(page){
-  if (page === 'PersonalInfo') {
-    turnFalse();
-    setPersonalInfo(true);
-  } else if (page === 'EducationalInfo') {
-    turnFalse();
-    setEducationInfo(true);
-  } else if (page === 'PhotoSignature') {
-    turnFalse();
-    setPhotoSignature(true);
-  } else if (page === 'SelectionSubject') {
-    turnFalse();
-    setSelectionSubject(true);
-  } else if (page === 'CoursePayment') {
-    turnFalse();
-    setCoursePayment(true);
-  } else if (page === 'SubmitApplication') {
-    turnFalse()  
-    setSubmitApplication(true);
   }
-}
+  function ManagePage(page) {
+    if (page === "PersonalInfo") {
+      turnFalse();
+      setPersonalInfo(true);
+    } else if (page === "Dashboard") {
+      turnFalse();
+      setDashboard(true);
+    } else if (page === "EducationalInfo") {
+      turnFalse();
+      setEducationInfo(true);
+    } else if (page === "PhotoSignature") {
+      turnFalse();
+      setPhotoSignature(true);
+    } else if (page === "SelectionSubject") {
+      turnFalse();
+      setSelectionSubject(true);
+    } else if (page === "CoursePayment") {
+      turnFalse();
+      setCoursePayment(true);
+    } else if (page === "SubmitApplication") {
+      turnFalse();
+      setSubmitApplication(true);
+    }
+  }
   return (
-<div className="flex min-h-screen">
-  {/* SidePanel on the left */}
-  <div className="w-100 bg-gray-800 text-white">
-    <SidePanel {...studentProps} />
-  </div>
-  <div className="flex-1 p-2 bg-gray-100">
-    <div className="text-gray-600">
-     {PersonalInfoCheck ? <PersonalInfo/> : null}
-     {EducationalInfoCheck ? <EducationalInfo/> : null}
-     {PhotoSignatureCheck ? <PhotoSignature/> : null}
-     {SelectionSubjectCheck ? <SelectionSubject/> : null}
-     {CoursePaymentCheck ? <CoursePayment/> : null}
-     {/* {SubmitApplicationCheck ? <SubmitApplication/> : null}  */}
-    
+    <div className="flex min-h-screen">
+      {/* SidePanel on the left */}
+      <div className="w-100 bg-gray-800 text-white">
+        <SidePanel {...studentProps} />
+      </div>
+      <div className="flex-1 p-2 bg-gray-100">
+        <div className="text-gray-600">
+          {PersonalInfoCheck ? <PersonalInfo /> : null}
+          {EducationalInfoCheck ? <EducationalInfo /> : null}
+          {PhotoSignatureCheck ? <PhotoSignature /> : null}
+          {SelectionSubjectCheck ? <SelectionSubject /> : null}
+          {CoursePaymentCheck ? <CoursePayment /> : null}
+          {/* {SubmitApplicationCheck ? <SubmitApplication/> : null}  */}
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-  )
+  );
 }
 
-export default Admission
+export default Admission;
 
 // import React, { useState } from 'react';
 // import SidePanel from '../components/SidePanel';
@@ -134,4 +182,3 @@ export default Admission
 // }
 
 // export default Admission;
-

@@ -50,7 +50,7 @@ function Signup() {
 
   return (
     <div className="form-wrapper Signup bg-gray-100 p-6 rounded-xl shadow-md max-w-lg mx-auto">
-      <form className="signupform" onSubmit={handleSubmit}>
+      <form className="signupform" onSubmit={(e)=>{handleSubmit(e)}}>
         <h2 className="text-2xl font-bold text-center mb-6">Signup</h2>
 
         <select

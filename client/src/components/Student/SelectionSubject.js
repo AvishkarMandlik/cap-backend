@@ -55,7 +55,9 @@ function SelectionSubject() {
                 <td className="border border-gray-300 px-4 py-2 text-center">
                   <input
                     type="checkbox"
-                    onChange={(e) => handleSubjectChange(e, subject.code)}
+                    checked={true}
+                    readOnly
+                    // onChange={(e) => handleSubjectChange(e, subject.code)}
                     className="form-checkbox h-5 w-5 text-blue-600"
                   />
                 </td>

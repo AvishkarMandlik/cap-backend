@@ -34,6 +34,7 @@ app.post("/signup", async (req, res) => {
     const checknumber = await collection.findOne({
       mobileNumber: req.body.mobileNumber,
     });
+
     if (checkemail) {
       return res.json({
         success: false,
