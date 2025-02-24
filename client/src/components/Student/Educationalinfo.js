@@ -23,8 +23,7 @@ function Educationalinfo() {
         <label className="block text-sm font-medium text-gray-700">Previous Exam Passed*</label>
         <input
           type="text"
-          value="S.Y.M.Sc.(Comp. Sci.)"
-          readOnly
+          value=""
           className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
         />
       </div>
@@ -33,8 +32,7 @@ function Educationalinfo() {
         <label className="block text-sm font-medium text-gray-700">Eligibility No.:</label>
         <input
           type="text"
-          value="12023235863"
-          readOnly
+          value=""
           className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
         />
       </div>

@@ -440,6 +440,9 @@ const PersonalInfo = () => {
           <label className="block text-sm font-medium text-gray-700">
             Pincode
           </label>
+          <label className="block text-sm font-medium text-gray-700">
+            Pincode
+          </label>
           <input
             type="number"
             value={pincode}
@@ -687,3 +690,4 @@ const PersonalInfo = () => {
 };
 
 export default PersonalInfo;
+
