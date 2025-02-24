@@ -3,7 +3,7 @@ const router = express.Router();
 
 
 
-Router.post("/InternalMarkEntry", async(req,res)=>{
+router.post("/InternalMarkEntry", async(req,res)=>{
 
     const db = await connect();
     const collection = db.collection("InternalMarks");
@@ -16,6 +16,21 @@ Router.post("/InternalMarkEntry", async(req,res)=>{
         data:internalMarkEntry
     });
 })
+
+
+router.get("/InternalMark", async(req,res)=>{
+    const db = await connect();
+
+    const collection = db.collection("InternalMarks");
+    const internalMark = await collection.find({subName:req.params.subName});
+
+    res.send(internalMark);
+    res.json({
+        status:true,
+        message:"Internal Marks fetch Successfully",
+        data:internalMark
+    });
+});
 
 
 module.exports = router
